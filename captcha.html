@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 10px;
+            margin-top: 10%;
+        }
+
+        .container input {
+            width: 20%;
+            padding: 10px;
+            ;
+            text-align: center;
+            border: 5%;
+            border: solid black 2px;
+        }
+
+        button {
+            padding: 8px;
+            background-color: rgb(2, 142, 95);
+            color: black;
+            font-size: medium;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="cap" style="margin-bottom: 10px;"> </h2>
+
+        <input type="text" id="inbox" placeholder="enter the captcha">
+        <button type="submit" onclick="check()">Verify</button>
+
+        <div style="display: none;" id="tick">
+            <h2 style="margin-top:18px; font-style: oblique;">verified...<span><i class="fa-regular fa-circle-check"
+                        style="color: #12ab2b;"></i></span></h2>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+
+        let captcha = document.getElementById("cap")
+        let character = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+        let capcha = ""
+        for (var i = 0; i <= 5; i++) {
+            capcha += character[Math.floor(Math.random() * 62)]
+        }
+        captcha.textContent = capcha
+
+//calling the function
+        function check() {
+
+            let input = document.getElementById("inbox").value
+
+            if (capcha === input.trim()) {
+                document.getElementById("tick").style.display = "block"
+            }
+            else {
+                alert("failed Try Again")
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
